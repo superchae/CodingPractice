@@ -1,0 +1,41 @@
+<head>
+    <style>
+        .js{
+            font-weight:bold;
+            font-size:10pt;
+            background-color: lightgoldenrodyellow;
+            color:rosybrown;
+        }
+        #first{
+            color:green;
+        }
+        span{
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="night" onclick="document.querySelector('.js').style.backgroundColor = 'gray';">
+    <div></div>
+    <span class="js">Javascript</span> abcd
+    <span>Javascript</span>
+    <div id="first">Javascript</div> abcd
+
+</body>
+
+ <!-- 
+    Event
+    - 웹 브라우저에서 일어나는 유용한 사건
+    - html 태그 안에서 onclick 속성은 반드시 "JS 코드"를 가짐
+
+    CSS 선택자
+    - id 선택자     (#first)
+    - class 선택자  (.js)
+    - tag 선택자    (span)
+    * 우선 순위: id > class > tag
+
+    div: 줄바꿈 포함
+    span: 줄바꿈 포함하지 않음
+    
+
+  -->

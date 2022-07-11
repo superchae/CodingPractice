@@ -1,0 +1,123 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <h1>Comparison operator & Boolean & Conditional state</h1>
+        <input id="night_day" type="button" value="night" onclick="
+            if(document.querySelector('#night_day').value === 'night'){
+                document.querySelector('body').style.backgroundColor = 'black';
+                document.querySelector('body').style.color = 'white';
+                document.querySelector('#night_day').value = 'day';
+            }
+            else{
+                document.querySelector('body').style.backgroundColor = 'white';
+                document.querySelector('body').style.color = 'black';
+                document.querySelector('#night_day').value = 'night';
+            }
+        
+        ">
+        <!-- 
+            Refactoring
+             * this
+              - 비효율적인 코드를 효율적으로 만들어서 가독성을 높이고 유지보수가 쉽도록 만들기 (기능은 변화 없이)
+              - onclick이 포함된 태그를 this로 나타냄
+             * 중복 제거하기
+         -->
+        <input type="button" value="night" onclick="
+            var target = document.querySelector('body')
+            if(this.value === 'night'){
+                target.style.backgroundColor = 'black';
+                target.style.color = 'white';
+                this.value = 'day';
+                
+                var alist = document.querySelectorAll('a');
+                var i = 0;
+                while(i < alist.length){
+                    console.log(alist[i]);
+                    alist[i].style.color = 'powderblue';
+                    i = i + 1;
+                }
+            }
+            else{
+                target.style.backgroundColor = 'white';
+                target.style.color = 'black';
+                this.value = 'night';
+
+                var alist = document.querySelectorAll('a');
+                var i = 0;
+                while(i < alist.length){
+                    console.log(alist[i]);
+                    alist[i].style.color = 'blue';
+                    i = i + 1;
+                }
+            }
+        
+        ">
+
+
+        <h4>===</h4>
+        <script>
+            document.write("1===1 ", 1===1, "<br>");
+            document.write("1===2 ", 1===2);
+        </script>
+        
+        <h4>1&lt;2</h4>
+        <script>
+            document.write("1 < 2   ", 1 < 2);
+        </script>
+
+        <h4>1&gt;2</h4>
+        <script>
+            document.write("1 > 2   ", 1 > 2);
+        </script>
+
+        <h1>Array</h1>
+        <script>
+            var coworkers = ["egoing", "leezche"];
+            document.write(coworkers[0] + "<br>");
+            document.write(coworkers[1] + "<br>");
+            document.write(coworkers.length + "<br>");
+            coworkers.push("duru");
+            coworkers.push("teaho");
+            document.write(coworkers.length + "<br>");
+        </script>
+
+        <h1>Loop</h1>
+        <script>
+            var i = 0;
+            while(i<3){
+                document.write("<li>", i + 1, "</li>")
+                i = i + 1;
+            }
+        </script>
+
+        <h1>Loop & Array</h1>
+        <script>
+            var fruits = ['apple', 'banana', 'coconut'];
+            var i = 0;
+            while(i < fruits.length){
+                document.write('<li><a href="http://a.com/' + fruits[i] + '">' + fruits[i] + '</a></li>');
+                i = i + 1;
+            }
+        </script>
+
+        <script>
+            fruits = ['apple', 'banana', 'coconut'];
+            var i = 0;
+            while(i < fruits.length){
+                document.write((i + 1) + '. '+ fruits[i] + '<br>');
+                i = i + 1;
+            }
+        </script>
+    </body>
+</html>
+
+
+<!-- 
+    Console 
+        > document.querySelector('#night_day').value
+        <- "night"
+
+        > 
+ -->

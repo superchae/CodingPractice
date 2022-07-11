@@ -1,0 +1,114 @@
+<html>
+    <head>
+        <script>
+            function nightDayHandler(self){
+                var target = document.querySelector('body')
+                if(self.value === 'night'){
+                    target.style.backgroundColor = 'black';
+                    target.style.color = 'white';
+                    self.value = 'day';
+                    
+                    var alist = document.querySelectorAll('a');
+                    var i = 0;
+                    while(i < alist.length){
+                        console.log(alist[i]);
+                        alist[i].style.color = 'powderblue';
+                        i = i + 1;
+                    }
+                }
+                else{
+                    target.style.backgroundColor = 'white';
+                    target.style.color = 'black';
+                    self.value = 'night';
+
+                    var alist = document.querySelectorAll('a');
+                    var i = 0;
+                    while(i < alist.length){
+                        console.log(alist[i]);
+                        alist[i].style.color = 'blue';
+                        i = i + 1;
+                    }
+                }
+            } 
+
+            /*
+            this는 코드가 포함된 태그를 가리킴
+            만약 함수 내에서 this.value === 'night' 라고 한다면
+            this는 전역 객체를 가리킴 (브라우저에서는 윈도우)
+            함수가 위치한 태그를 나타내고 싶으면
+            nightDayHandler(this); 라고 함수 호출해야 함수가 실행되는 위치의 태그를 전달
+            함수 작성할 때,
+            function nightDayHandler(self){
+                self.XXXX;
+            }
+            라고 해야 코드 리팩토링 됨
+            */
+
+        </script>
+    </head>
+    <body>
+        <h1>Function_button</h1>
+
+        <input type="button" value="night" onclick="
+            nightDayHandler(this);
+        ">
+
+        <script>
+            var fruits = ['apple', 'banana', 'coconut'];
+            var i = 0;
+            while(i < fruits.length){
+                document.write('<li><a href="http://a.com/' + fruits[i] + '">' + fruits[i] + '</a></li>');
+                i = i + 1;
+            }
+        </script>
+
+        <script>
+            fruits = ['apple', 'banana', 'coconut'];
+            var i = 0;
+            while(i < fruits.length){
+                document.write((i + 1) + '. '+ fruits[i] + '<br>');
+                i = i + 1;
+            }
+        </script>
+
+        <h1>Function</h1>
+        <script>
+            function two(){
+                document.write('<li>2-1</li>');
+                document.write('<li>2-2</li>');
+            }
+            document.write('<li>1</li>');
+            two();
+            document.write('<li>3</li>');
+            two();
+        </script>
+
+        <h2>Parameter & Argument</h2>
+        <script>
+            function sum(left, right){
+                document.write(left + right + '<br>');
+            }
+            function sumColorRed(left, right){
+                document.write('<div style = "color:red">' + left + right + '</div><br>');
+            }
+            sum(2, 3);
+            sumColorRed(2, 3);
+            sum(3, 4);
+        </script>
+        <!-- left, right: parameter
+                2, 3, 4: argument -->
+        
+        <h2>Return</h2>
+        <script>
+            function sum2(left, right){
+                return left + right;
+            }
+            document.write(sum2(2,3) + '<br>');
+            document.write('<div style = "color:red">' + sum2(2,3) + '</div><br>');
+            document.write('<div style = "font-size:2rem">' + sum2(2,3) + '</div><br>');
+            
+        </script>
+
+
+    </body>
+</html>

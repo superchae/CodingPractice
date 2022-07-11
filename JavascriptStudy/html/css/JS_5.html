@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="colors.js"></script>
+        <!-- 
+            연관된 코드를 파일로 사용함으로써 JS 코드를 한번에 관리, 재사용, 동시에 코드를 수정할 수 있어서 유지보수가 편해짐
+            코드가 명확해지고 가독성이 좋아짐
+            
+            웹서버 입장에서 js 파일을 다운로드해서 접속을 한 번 더 해야하지만,
+            한번 웹브라우저에 다운로드된 파일은 캐쉬에 저장되어서 다음에 접속할 할 땐 저장된 파일을 읽어서
+            네트워크에 접속하지 않게 함
+            -> 서버와 사용자 모두 트래픽 줄이고, 빠르게 페이지 표시 가능함
+            
+         -->
+        <script>
+            $('h1').css('font-size', '1em');
+        </script>
+    </head>
+    <body>
+        <input type="button" value="night" onclick="
+            nightDayHandler(this);
+        ">
+        <script>
+            var fruits = ['apple', 'banana', 'coconut'];
+            var i = 0;
+            while(i < fruits.length){
+                document.write('<li><a href="http://a.com/' + fruits[i] + '">' + fruits[i] + '</a></li>');
+                i = i + 1;
+            }
+        </script>
+
+        <script>
+            fruits = ['apple', 'banana', 'coconut'];
+            var i = 0;
+            while(i < fruits.length){
+                document.write((i + 1) + '. '+ fruits[i] + '<br>');
+                i = i + 1;
+            }
+        </script>
+        
+        <h1>생각해보기</h1>
+        <h2>jQuery</h2>
+        <h1>글자 크기</h1>
+    </body>
+</html>
+
+
+<!-- 
+    document 객체: 태그 삭제, 자식 태그 추가하고 싶은 경우
+    DOM 객체
+    windows 객체: 웹브라우저 자체를 제어해야하는 경우 (웹페이지 주소, 창 크기, 창을 열어야하는 경우)
+    ajax: 웹페이지를 새로고침 하지 않고도 정보를 변경하고 싶은 경우
+    cookie: 웹페이지가 새로 고침되어도 현재 상태를 유지, 사용자 개인 맞춤형 서비스
+    offline web application: 인터넷이 끊겨도 동작하는 웹 페이지
+    webRTC: 화상 통신 웹 앱
+    speech: 음성 인식, 음성 처리
+    webGL: 3차원 그래픽
+    webVR: 가상 현실
+ -->

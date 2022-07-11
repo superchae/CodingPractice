@@ -1,0 +1,158 @@
+<!--
+    객체 (Object)
+    함수의 기반 위에서 존재하는 개념
+    서로 연관된 함수와 변수가 아주 많아질 때 이를 정리하기 위해 사용
+    - 예를 들어, 함수의 종류가 아주 많아지게 되면 함수 이름이 중복되지 않도록 만들기 위해 복잡한 이름을 사용하게 됨
+    - 객체를 이용해 비슷한 함수끼리 그룹으로 만들어 묶어줌 (폴더로 정리하는 것 처럼)
+    - 서로 다른 그룹으로 나누어진 함수는 이름이 겹쳐도 됨
+
+    document.querySelector('body');
+        documet: 객체
+        querySelector: 메소드(Method), 객체에 속해 있는 함수
+-->
+
+
+<html>
+    <head>
+        <script>
+            var Links = {
+                setColor:function (color){
+                    var alist = document.querySelectorAll('a');
+                    var i = 0;
+                    while(i < alist.length){
+                        console.log(alist[i]);
+                        alist[i].style.color = color;
+                        i = i + 1;
+                    }
+                }
+            }
+            
+            var Body = {
+                setColor:function (color){
+                    document.querySelector('body').style.color = color;
+                },
+                setBackgroundColor:function (color){
+                    document.querySelector('body').style.backgroundColor = color;
+                }
+            }
+            // 객체의 property를 구분할 때는 ',' 사용
+
+            function nightDayHandler(self){
+                var target = document.querySelector('body')
+                if(self.value === 'night'){
+                    Body.setBackgroundColor('black');
+                    Body.setColor('white');
+                    self.value = 'day';
+                    
+                    Links.setColor('powderblue');
+                }
+                else{
+                    Body.setBackgroundColor('white');
+                    Body.setColor('black');
+                    self.value = 'night';
+
+                    Links.setColor('blue');
+                }
+            } 
+        </script>
+    </head>
+    <body>
+        <h1>Object</h1>
+
+        <input type="button" value="night" onclick="
+            nightDayHandler(this);
+        ">
+
+        <h2>Create</h2>
+        <script>
+            var coworkers = {
+                'programmers':'egoing',
+                'designer':'leezche'
+            };
+            document.write('programmers : ' + coworkers.programmers + "<br>");
+            document.write('designer : ' + coworkers.designer + "<br>")
+            coworkers.bookkeeper = "duru";
+            document.write('bookkeeper : ' + coworkers.bookkeeper + "<br>");
+            coworkers["data scientist"] = "teaho";
+            document.write("data scientist : " + coworkers["data scientist"] + "<br>");            
+        </script>
+
+        <!-- 
+            객체: 순서 없이 각각에 이름이 있음, 이름을 이용해 값을 꺼내고 넣음
+            (배열은 순서를 가지도록 데이터 저장)
+         -->
+
+        <h2>Iterate</h2>
+        <script>
+            for (var key in coworkers){
+                document.write(key + ' : ' + coworkers[key] + "<br>");
+            }
+        </script>
+
+        <h2>Property & Method</h2>
+        <script>
+            coworkers.showAll = function(){
+                for (var key in this){
+                document.write(key + ' : ' + this[key] + "<br>");
+            }
+            }
+            /*
+            functoin showAll(){
+
+            }
+            과 똑같은 표현!
+
+            함수가 소속된 객체를 나타내는 것 : this!
+            예를 들어 변수명이 바뀌는 경우 함수를 수정해야하기 때문에 this 사용하기!
+            
+            coworkers의 데이터로 showAll 메소드도 포함되기 때문에 showall 함수도 프린트 됨!
+            객체에 해당하는 함수 - method
+            객체에 해당하는 변수 - property
+            */
+
+           coworkers.showAll();
+        </script>
+
+        <h4>생각해보기</h4>
+         <script>
+            var countires = {};
+            countires.asia = "korea";
+            countires["europe"] = "england";
+            document.write(countires.asia + "<br>");
+            document.write(countires.europe + "<br>");
+            for(key in countires){
+                document.write(key + ": " + countires[key] + "<br>");
+            }
+
+            coworkers.printProgrammer = function(){
+                for (var key in this){
+                    if (key === 'programmers'){
+                        document.write(key + ' : ' + this[key] + '<br>');
+                    }
+                }
+            }
+            coworkers.printProgrammer();
+         </script>
+
+        <h4></h4>
+        <script>
+            var fruits = ['apple', 'banana', 'coconut'];
+            var i = 0;
+            while(i < fruits.length){
+                document.write('<li><a href="http://a.com/' + fruits[i] + '">' + fruits[i] + '</a></li>');
+                i = i + 1;
+            }
+        </script>
+
+        <script>
+            fruits = ['apple', 'banana', 'coconut'];
+            var i = 0;
+            while(i < fruits.length){
+                document.write((i + 1) + '. '+ fruits[i] + '<br>');
+                i = i + 1;
+            }
+        </script>
+    </body>
+</html>
+
+
